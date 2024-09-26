@@ -25,6 +25,7 @@ public class FireBall : MonoBehaviour
     public void OnPointerDown(PointerEventData eventData)
     {
         isDraging = true;
+        finishPos = Vector2.zero;
         startPos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -Input.mousePosition.z));
         print("start:"+startPos);
     }
@@ -39,7 +40,7 @@ public class FireBall : MonoBehaviour
     {
         isDraging = false;
         fireAngle = (finishPos - startPos).normalized;
-        fireVelocity = Vector2.Distance(startPos,finishPos) * 15;
+        fireVelocity = Vector2.Distance(startPos,finishPos) * 100;
         print("velocity:"+fireVelocity+",angle:"+fireAngle);
         _rigid.AddForce(-fireAngle * fireVelocity);
     }
