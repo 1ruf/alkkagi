@@ -9,6 +9,7 @@ public class FireBall : MonoBehaviour
     ,IPointerUpHandler
 {
     [SerializeField] private GameObject ball;
+    [SerializeField] private float power;
     private Rigidbody2D _rigid;
 
 
@@ -40,7 +41,7 @@ public class FireBall : MonoBehaviour
     {
         isDraging = false;
         fireAngle = (finishPos - startPos).normalized;
-        fireVelocity = Vector2.Distance(startPos,finishPos) * 100;
+        fireVelocity = Vector2.Distance(startPos,finishPos) * power;
         print("velocity:"+fireVelocity+",angle:"+fireAngle);
         _rigid.AddForce(-fireAngle * fireVelocity);
     }
